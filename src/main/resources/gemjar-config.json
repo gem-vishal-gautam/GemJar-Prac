@@ -1,0 +1,16 @@
+{
+  "environment": "prod",
+  "projectName": "GemJar Project",
+  "reportName": "GemJar Report",
+  "gemjarSubID": "test_id",
+  "dev": {
+    "browserName": "firefox",
+    "launchUrl": "https://www.google.com",
+    "browserTimeout": 100
+  },
+  "prod": {
+    "browserName": "chrome",
+    "launchUrl": "https://www.saucedemo.com/",
+    "browserTimeout": 100
+  }
+}
