@@ -12,5 +12,9 @@ public class xpaths {
     public static By shoppingCart_Btn = By.xpath("//a[@class='shopping_cart_link']");
     public static By cart_quantity = By.xpath("//div[@class='cart_quantity']");
     public static By continue_shopping_Btn = By.xpath("//button[@id='continue-shopping']");
-    public static By images = By.xpath("//img");
+    public static By products = By.xpath("//div[@class='inventory_item_name']");
+    public static By product2 = By.xpath("//div[normalize-space()='Sauce Labs Bike Light']");
+    public static By productTitle = By.xpath("//div[@class='inventory_details_name large_size']");
+    public static By productDetails = By.xpath("//div[@class='inventory_details_desc large_size']");
+
 }

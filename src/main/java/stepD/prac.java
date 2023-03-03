@@ -9,6 +9,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import locators.xpaths;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 //import java.sql.DriverAction;
 
 public class prac extends GemjarTestngBase {
@@ -22,6 +25,10 @@ public class prac extends GemjarTestngBase {
         DriverAction.waitSec(2);
         DriverAction.click(xpaths.loginBtn);
 
+    }
+
+    @Then("^user verifies the url$")
+    public void urlVerify() {
         String url = DriverAction.getCurrentURL();
         if (url.contains("www.saucedemo.com")) {
             System.out.println("Url is Verified");
@@ -60,7 +67,52 @@ public class prac extends GemjarTestngBase {
         DriverAction.waitSec(2);
     }
 
+    @Then("^user checks the product quantity$")
+    public void productQuantity() {
+        List<WebElement> listofproducts = DriverAction.getElements(xpaths.products);
+        int no_of_products = listofproducts.size();
+        System.out.println("Number of Products are : " + no_of_products);
+        for (int i = 0; i < no_of_products; i++) {
+            System.out.println("Products are : " + listofproducts.get(i).getText());
+        }
+
+        if (no_of_products > 0) {
+            System.out.println("Products Verification is successful");
+            GemTestReporter.addTestStep("Verification of Products Quantity", "successfully verified the products quantity", STATUS.PASS);
+        } else {
+            GemTestReporter.addTestStep("Verification of Products Quantity", "Products are not Available", STATUS.FAIL);
+
+        }
+    }
+
+
+    @And("^user verifies the text of a product (.+), (.+)$")
+    public void detail_of_product(String ProductTitle, String ProductDetails) {
+        DriverAction.waitSec(2);
+        DriverAction.click(xpaths.product2, "Sauce Labs Bike Light");
+        DriverAction.waitSec(2);
+        String productTitle = DriverAction.getElementText(xpaths.productTitle);
+        System.out.println(productTitle);
+
+        if (productTitle.equalsIgnoreCase(ProductTitle)) {
+            GemTestReporter.addTestStep("Verification of Product Title", "Successfully Verified the Title", STATUS.PASS);
+        } else {
+            GemTestReporter.addTestStep("Verification of Product Title", "Not Verified", STATUS.FAIL);
+
+        }
+
+        String productDetails = DriverAction.getElementText(xpaths.productDetails);
+        System.out.println("Product details are : " + productDetails);
+
+        if (productDetails.contains(ProductDetails)) {
+            GemTestReporter.addTestStep("Verification of Product Details", "Successfully Verified the Details", STATUS.PASS);
+        } else {
+            GemTestReporter.addTestStep("Verification of Product Details", "Not Verified", STATUS.FAIL);
+
+        }
+    }
 
 }
+
 
 
