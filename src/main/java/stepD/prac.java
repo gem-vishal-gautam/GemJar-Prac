@@ -1,9 +1,12 @@
 package stepD;
 
+import com.gemini.generic.exception.GemException;
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.tdd.GemjarTestngBase;
 import com.gemini.generic.ui.utils.DriverAction;
+import com.gemini.generic.ui.utils.DriverManager;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Given;
@@ -15,6 +18,11 @@ import java.util.List;
 //import java.sql.DriverAction;
 
 public class prac extends GemjarTestngBase {
+
+    @Before
+    public void start() throws GemException {
+        DriverManager.setUpBrowser();
+    }
 
     @Given("^user enter (.+) and (.+) and logs in.$")
     public void logIn(String Username, String Password) {
@@ -111,6 +119,7 @@ public class prac extends GemjarTestngBase {
 
         }
     }
+
 
 }
 

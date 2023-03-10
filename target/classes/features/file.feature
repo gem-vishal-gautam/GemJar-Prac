@@ -18,3 +18,10 @@ Feature: Swag Labs Automation
     Examples:
       | Username      | Password     | expectedProduct       | expectedDetails                                |
       | standard_user | secret_sauce | Sauce Labs Bike Light | A red light isn't the desired state in testing |
+
+
+  Scenario Outline: Launch SauceDemo, Checkout the product
+    Given user enter <Username> and <Password> and logs in.
+    Examples:
+      | Username      | Password     |
+      | standard_user | secret_sauce |
