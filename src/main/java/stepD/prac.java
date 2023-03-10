@@ -9,18 +9,17 @@ import com.gemini.generic.ui.utils.DriverManager;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import locators.xpaths;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
-//import java.sql.DriverAction;
+
 
 public class prac extends GemjarTestngBase {
 
     @Before
-    public void start() throws GemException {
+    public void start() throws Exception {
         DriverManager.setUpBrowser();
     }
 
